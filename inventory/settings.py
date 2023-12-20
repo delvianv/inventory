@@ -89,7 +89,8 @@ WSGI_APPLICATION = "inventory.wsgi.application"
 # }
 DATABASES = {
     "default": dj_database_url.config(
-        default="postgresql://postgres:postgres@localhost:5432/mysite", conn_max_age=600
+        default="postgres://inventory_yocto_db_user:4XH8mpVroGqqOSLPZgPa07Aytk5XAlb2@dpg-cm1a6p8cmk4c73d7d12g-a/inventory_yocto_db",
+        conn_max_age=600,
     )
 }
 
