@@ -23,14 +23,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = "django-insecure-jz+9!wck8dg_-(n!7hg9r46zpp7i0tf*t$(leox8-)oy^+z!%)"
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.environ.get(
+    "SECRET_KEY",
+    default="jz+9!wck8dg_-(n!7hg9r46zpp7i0tf*t$(leox8-)oy^+z!%)",
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
 DEBUG = "RENDER" not in os.environ
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
 if RENDER_EXTERNAL_HOSTNAME := os.environ.get("RENDER_EXTERNAL_HOSTNAME"):
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
@@ -81,18 +82,19 @@ WSGI_APPLICATION = "inventory.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
-#     }
-# }
-DATABASES = {
-    "default": dj_database_url.config(
-        default="postgres://inventory_yocto_db_user:4XH8mpVroGqqOSLPZgPa07Aytk5XAlb2@dpg-cm1a6p8cmk4c73d7d12g-a/inventory_yocto_db",
-        conn_max_age=600,
-    )
-}
+if DEBUG:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
+else:
+    DATABASES = {
+        "default": dj_database_url.config(
+            default=os.environ["DATABASE_URL"], conn_max_age=600
+        )
+    }
 
 
 # Password validation
