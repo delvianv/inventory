@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "inventory"
-version = "1.0.0"
-description = ""
+version = "1.0"
+description = "Keep track of your inventory quickly and easily"
 authors = ["Delvian Valentine <delvian.valentine@gmail.com>"]
 readme = "README.md"
 
