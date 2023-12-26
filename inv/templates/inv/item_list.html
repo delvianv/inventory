@@ -7,7 +7,7 @@
       <li><a href="{% url 'item-list' %}" class="nav-link px-2 text-secondary">Inventory</a></li>
       <li><a href="{% url 'item-create' %}" class="nav-link px-2 text-white">Add item</a></li>
     </ul>
-    <form method="get" class="col-12 col-lg-auto mb-2 mb-lg-0 me-2">
+    <form method="get" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
       <input type="search" placeholder="Search…" name="q" class="form-control form-control-dark text-bg-dark" />
     </form>
     <a href="{% url 'item-list' %}" class="btn btn-outline-warning">Show all</a>
@@ -15,7 +15,7 @@
 </nav>
 
 <section class="container py-5 mt-5 table-responsive">
-  <div class="py-5">
+  <div class="py-5 mt-5 mt-lg-0">
     <table class="table table-bordered table-striped">
       {% if page_obj.paginator.num_pages > 1 %}
       <caption>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</caption>
