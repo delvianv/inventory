@@ -1,0 +1,25 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="author"
+      content="Delvian Valentine <delvian.valentine@gmail.com>"
+    />
+    <meta
+      name="description"
+      content="Keep track of your inventory quickly and easily"
+    />
+    <meta name="keywords" content="inventory, stock" />
+    <link rel="stylesheet" href="{% static 'inv/styles/bootstrap.css' %}" />
+    <link rel="icon" href="{% static 'inv/icons/icon.png' %}" />
+    <title>Yocto Inventory</title>
+  </head>
+
+  <body>
+    {% block content %}{% endblock%}
+  </body>
+</html>

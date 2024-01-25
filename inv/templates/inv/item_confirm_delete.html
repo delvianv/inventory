@@ -1,0 +1,34 @@
+{% extends 'inv/index.html' %} {% block content %}
+<nav class="p-3 text-bg-dark fixed-top" data-bs-theme="dark">
+  <div
+    class="container d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
+  >
+    <ul
+      class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
+    >
+      <li>
+        <a href="{% url 'item-list' %}" class="nav-link px-2 text-white">
+          Inventory
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'item-create' %}" class="nav-link px-2 text-white">
+          Add item
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<section class="container py-5 mt-5">
+  <div class="py-5">
+    <p class="lead">
+      Are you sure you want to delete {{ object.description }}?
+    </p>
+    <form method="post">
+      {% csrf_token %} {{ form }}
+      <input type="submit" value="Confirm" class="btn btn-danger" />
+    </form>
+  </div>
+</section>
+{% endblock %}
