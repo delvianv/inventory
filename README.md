@@ -1,6 +1,6 @@
 # Yocto Inventory
 
-Keep track of your inventory quickly and easily
+Track your inventory quickly and effortlessly
 
 ![Main window](images/main.png)
 
