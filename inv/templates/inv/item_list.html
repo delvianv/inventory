@@ -1,117 +1,84 @@
-{% extends 'inv/index.html' %} {% block content %}
-<nav class="p-3 text-bg-dark fixed-top" data-bs-theme="dark">
-  <div
-    class="container d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
-  >
-    <ul
-      class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
-    >
-      <li>
-        <a href="{% url 'item-list' %}" class="nav-link px-2 text-secondary">
-          Inventory
-        </a>
-      </li>
-      <li>
-        <a href="{% url 'item-create' %}" class="nav-link px-2 text-white">
-          Add item
-        </a>
-      </li>
-    </ul>
-    <form method="get" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-      <input
-        type="search"
-        placeholder="Search…"
-        name="q"
-        class="form-control form-control-dark text-bg-dark"
-      />
-    </form>
-    <a href="{% url 'item-list' %}" class="btn btn-outline-warning">Show all</a>
-  </div>
-</nav>
+{% extends 'inv/index.html' %}
 
-<section class="container py-5 mt-5 table-responsive">
-  <div class="py-5 mt-5 mt-lg-0">
-    <table class="table table-bordered table-striped">
-      {% if page_obj.paginator.num_pages > 1 %}
-      <caption>
-        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-      </caption>
-      {% endif %}
-      <thead>
-        <tr class="text-center">
-          <th>Description</th>
-          <th>Quantity</th>
-          <th>Cost</th>
-          <th>Price</th>
-        </tr>
-      </thead>
-      <tbody class="table-group-divider">
-        {% for item in page_obj %}
-        <tr>
-          <td>
-            <a
-              href="{% url 'item-update' item.id %}"
-              class="link-underline link-underline-opacity-0"
-            >
-              {{ item.description }}
-            </a>
-          </td>
-          <td class="text-end">{{ item.qty }}</td>
-          <td class="text-end">{{ item.cost|floatformat:'2g' }}</td>
-          <td class="text-end">{{ item.price|floatformat:'2g' }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-
-    {% if page_obj.paginator.num_pages > 1 %}
-    <nav>
-      <ul class="pagination">
-        {% if page_obj.has_previous %}
-        <li class="page-item"><a href="?page=1" class="page-link">First</a></li>
-        <li class="page-item">
-          <a href="?page={{ page_obj.previous_page_number }}" class="page-link">
-            {{ page_obj.previous_page_number }}
-          </a>
+{% block content %}
+  <nav class="p-3 text-bg-dark fixed-top" data-bs-theme="dark">
+    <div class="container d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li>
+          <a href="{% url 'item-list' %}" class="nav-link px-2 text-secondary">Inventory</a>
         </li>
-        {% endif %}
-
-        <li class="page-item active">
-          <a href="?page={{ page_obj.number }}" class="page-link">
-            {{ page_obj.number }}
-          </a>
+        <li>
+          <a href="{% url 'item-create' %}" class="nav-link px-2 text-white">Add item</a>
         </li>
-
-        {% if page_obj.has_next %}
-        <li class="page-item">
-          <a href="?page={{ page_obj.next_page_number }}" class="page-link">
-            {{ page_obj.next_page_number }}
-          </a>
-        </li>
-        <li class="page-item">
-          <a href="?page={{ page_obj.paginator.num_pages }}" class="page-link">
-            Last
-          </a>
-        </li>
-        {% endif %}
       </ul>
-    </nav>
-    {% endif %}
-  </div>
-</section>
+      <form method="get" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+        <input type="search" placeholder="Search…" name="q" class="form-control form-control-dark text-bg-dark" />
+      </form>
+      <a href="{% url 'item-list' %}" class="btn btn-outline-warning">Show all</a>
+    </div>
+  </nav>
 
-<footer class="container py-3 my-4 border-top">
-  <p class="text-center text-body-secondary">
-    Copyright &copy; 2024
-    <strong>
-      <a
-        href="mailto:delvian.valentine@gmail.com"
-        title="delvian.valentine@gmail.com"
-        class="link-secondary link-underline link-underline-opacity-0"
-      >
-        Delvian Valentine
-      </a>
-    </strong>
-  </p>
-</footer>
+  <section class="container py-5 mt-5 table-responsive">
+    <div class="py-5 mt-5 mt-lg-0">
+      <table class="table table-bordered table-striped">
+        {% if page_obj.paginator.num_pages > 1 %}
+          <caption>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</caption>
+        {% endif %}
+        <thead>
+          <tr class="text-center">
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Cost</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          {% for item in page_obj %}
+            <tr>
+              <td>
+                <a href="{% url 'item-update' item.id %}" class="link-underline link-underline-opacity-0">{{ item.description }}</a>
+              </td>
+              <td class="text-end">{{ item.qty }}</td>
+              <td class="text-end">{{ item.cost|floatformat:'2g' }}</td>
+              <td class="text-end">{{ item.price|floatformat:'2g' }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      {% if page_obj.paginator.num_pages > 1 %}
+        <nav>
+          <ul class="pagination">
+            {% if page_obj.has_previous %}
+              <li class="page-item">
+                <a href="?page=1" class="page-link">First</a>
+              </li>
+              <li class="page-item">
+                <a href="?page={{ page_obj.previous_page_number }}" class="page-link">{{ page_obj.previous_page_number }}</a>
+              </li>
+            {% endif %}
+
+            <li class="page-item active">
+              <a href="?page={{ page_obj.number }}" class="page-link">{{ page_obj.number }}</a>
+            </li>
+
+            {% if page_obj.has_next %}
+              <li class="page-item">
+                <a href="?page={{ page_obj.next_page_number }}" class="page-link">{{ page_obj.next_page_number }}</a>
+              </li>
+              <li class="page-item">
+                <a href="?page={{ page_obj.paginator.num_pages }}" class="page-link">Last</a>
+              </li>
+            {% endif %}
+          </ul>
+        </nav>
+      {% endif %}
+    </div>
+  </section>
+
+  <footer class="container py-3 my-4 border-top">
+    <p class="text-center text-body-secondary">
+      &copy; <a href="https://delvianv.github.io" class="link-secondary link-underline link-underline-opacity-0">Delvian Valentine</a>
+    </p>
+  </footer>
 {% endblock %}

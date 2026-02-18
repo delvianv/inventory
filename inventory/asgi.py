@@ -1,5 +1,3 @@
-# asgi.py
-
 """
 ASGI config for inventory project.
 

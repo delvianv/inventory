@@ -1,5 +1,3 @@
-# settings.py
-
 """
 Django settings for inventory project.
 

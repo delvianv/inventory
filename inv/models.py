@@ -1,5 +1,3 @@
-# models.py
-
 from django.db.models import CharField, FloatField, Model, PositiveIntegerField
 from django.urls import reverse
 

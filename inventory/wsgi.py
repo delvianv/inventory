@@ -1,5 +1,3 @@
-# wsgi.py
-
 """
 WSGI config for inventory project.
 

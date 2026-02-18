@@ -1,100 +1,51 @@
-{% extends 'inv/index.html' %} {% block content %}
-<nav class="p-3 text-bg-dark fixed-top" data-bs-theme="dark">
-  <div
-    class="container d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
-  >
-    <ul
-      class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
-    >
-      <li>
-        <a href="{% url 'item-list' %}" class="nav-link px-2 text-white">
-          Inventory
-        </a>
-      </li>
-      <li>
-        <a href="{% url 'item-create' %}" class="nav-link px-2 text-secondary">
-          Add item
-        </a>
-      </li>
-    </ul>
-  </div>
-</nav>
+{% extends 'inv/index.html' %}
 
-<section class="container py-5 mt-5">
-  <div class="py-5">
-    <form method="post">
-      {% csrf_token %}
-      <div class="form-floating mb-3">
-        <input
-          type="text"
-          name="description"
-          maxlength="100"
-          required
-          id="id_description"
-          placeholder="Description"
-          class="form-control"
-        />
-        <label for="{{ form.description.id_for_label }}" class="form-label">
-          Description
-        </label>
-      </div>
-      <div class="row">
-        <div class="col-md">
-          <div class="form-floating mb-3">
-            <input
-              type="number"
-              name="qty"
-              value="0"
-              min="0"
-              required
-              id="id_qty"
-              placeholder="0"
-              class="form-control"
-            />
-            <label for="{{ form.qty.id_for_label }}" class="form-label">
-              Quantity
-            </label>
+{% block content %}
+  <nav class="p-3 text-bg-dark fixed-top" data-bs-theme="dark">
+    <div class="container d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li>
+          <a href="{% url 'item-list' %}" class="nav-link px-2 text-white">Inventory</a>
+        </li>
+        <li>
+          <a href="{% url 'item-create' %}" class="nav-link px-2 text-secondary">Add item</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="container py-5 mt-5">
+    <div class="py-5">
+      <form method="post">
+        {% csrf_token %}
+        <div class="form-floating mb-3">
+          <input type="text" name="description" maxlength="100" required id="id_description" placeholder="Description" class="form-control" />
+          <label for="{{ form.description.id_for_label }}" class="form-label">Description</label>
+        </div>
+        <div class="row">
+          <div class="col-md">
+            <div class="form-floating mb-3">
+              <input type="number" name="qty" value="0" min="0" required id="id_qty" placeholder="0" class="form-control" />
+              <label for="{{ form.qty.id_for_label }}" class="form-label">Quantity</label>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="form-floating mb-3">
+              <input type="number" name="cost" value="0" step="any" required id="id_cost" placeholder="0" class="form-control" />
+              <label for="{{ form.cost.id_for_label }}" class="form-label">Cost</label>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="form-floating mb-3">
+              <input type="number" name="price" value="0" step="any" required id="id_price" placeholder="0" class="form-control" />
+              <label for="{{ form.price.id_for_label }}" class="form-label">Price</label>
+            </div>
           </div>
         </div>
-        <div class="col-md">
-          <div class="form-floating mb-3">
-            <input
-              type="number"
-              name="cost"
-              value="0"
-              step="any"
-              required
-              id="id_cost"
-              placeholder="0"
-              class="form-control"
-            />
-            <label for="{{ form.cost.id_for_label }}" class="form-label">
-              Cost
-            </label>
-          </div>
+        <div class="d-flex justify-content-end">
+          <input type="submit" value="Save" class="btn btn-primary" />
         </div>
-        <div class="col-md">
-          <div class="form-floating mb-3">
-            <input
-              type="number"
-              name="price"
-              value="0"
-              step="any"
-              required
-              id="id_price"
-              placeholder="0"
-              class="form-control"
-            />
-            <label for="{{ form.price.id_for_label }}" class="form-label">
-              Price
-            </label>
-          </div>
-        </div>
-      </div>
-      <div class="d-flex justify-content-end">
-        <input type="submit" value="Save" class="btn btn-primary" />
-      </div>
-    </form>
-  </div>
-</section>
+      </form>
+    </div>
+  </section>
 {% endblock %}

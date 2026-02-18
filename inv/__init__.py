@@ -1,5 +1,4 @@
-# __init__.py
-# Copyright (c) 2024  Delvian Valentine <delvian.valentine@gmail.com>
+# (c) Delvian Valentine <https://delvianv.github.io>
 
-__author__ = "Delvian Valentine <delvian.valentine@gmail.com>"
-__version__ = "1.0"
+__author__ = "Delvian Valentine <https://delvianv.github.io>"
+__version__ = "1.0.1"
