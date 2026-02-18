@@ -8,33 +8,33 @@ Track your inventory quickly and effortlessly
 
 1. **Clone the repository**
 
-```bash
-git clone https://github.com/delvianv/inventory.git
-cd inventory
-```
+   ```bash
+   git clone https://github.com/delvianv/inventory.git
+   cd inventory
+   ```
 
 2. **Create virtual environment**
 
-```bash
-python -m venv .venv
-source .venv/bin/activate
-```
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate
+   ```
 
 3. **Install dependencies**
 
-```bash
-pip install -r requirements.txt
-```
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 4. **Run development server**
 
-```bash
-python manage.py runserver
-```
+   ```bash
+   python manage.py runserver
+   ```
 
 5. **Open in browser**
 
-http://localhost:8000/
+   http://localhost:8000/
 
 ## Support
 
