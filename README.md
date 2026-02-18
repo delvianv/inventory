@@ -6,7 +6,7 @@ Track your inventory quickly and effortlessly
 
 ## Installation
 
-1. **Clone the repository**
+1. **Clone repository**
 
    ```bash
    git clone https://github.com/delvianv/inventory.git
