@@ -2,7 +2,7 @@
 
 Track your inventory quickly and effortlessly
 
-![Main window](images/main.png)
+![Screenshot](images/screenshot.png)
 
 ## Installation
 
